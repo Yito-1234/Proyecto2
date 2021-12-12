@@ -1,0 +1,38 @@
+﻿@model Proyecto2.Models.VentaComidum
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layoutfinal.cshtml";
+}
+
+<h3>Eliminar Compra</h3>
+<div>
+    <h4>VentaComidum</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Cantidad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cantidad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdComidaNavigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdComidaNavigation.IdComida)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdVenta" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a class="btn btn-primary" asp-action="Index">Regresar</a>
+    </form>
+</div>

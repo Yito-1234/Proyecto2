@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Proyecto2.Models.Comida>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Nuevo Registro</a>
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                <center>
+                    <label>Nombre</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Descripción</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Fotografía</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Precio</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Estado</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Comercio</label>
+                </center>
+            </th>
+         
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomComida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+
+            <td>
+
+                <img width="100" src="@Url.Action("getImage" ,"Comidas" ,new { id = item.IdComida })" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdComercioNavigation.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdComida" class="btn btn-warning"  >Editar</a> |
+                
+                <a asp-action="Delete" asp-route-id="@item.IdComida" class="btn btn-danger" >Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

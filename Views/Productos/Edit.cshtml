@@ -1,0 +1,69 @@
+﻿@model Proyecto2.Models.Producto
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Editar Producto</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post" enctype="multipart/form-data">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdProducto" />
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label">Nombre</label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descripcion" class="control-label">Descripción</label>
+                <input asp-for="Descripcion" class="form-control" />
+                <span asp-validation-for="Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    <label>Fotografía</label>
+                    <br />
+                    <img width="100" src="@Url.Action("getImage" ,"Productos" ,new { id = Model.IdProducto })" />
+                </div>
+                <br />
+                <div class="form-group">
+
+                    <input type="file" name="Fotografia" />
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label">Precio</label>
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdComercio" class="control-label">Comercio</label>
+                <select asp-for="IdComercio" class="form-control" asp-items="ViewBag.IdComercio"></select>
+                <span asp-validation-for="IdComercio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cantidad" class="control-label">Cantidad</label>
+                <input asp-for="Cantidad" class="form-control" />
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Editar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+
+
+</div>
+
+<div>
+    <a class="btn btn-primary" asp-action="Index">Regresar</a>
+</div>
+

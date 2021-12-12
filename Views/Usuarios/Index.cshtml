@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Proyecto2.Models.Usuario>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Usuarios</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Nuevo Registro</a>
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                <center>
+                    <label>Nombre</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Apellidos</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Usuario</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Password</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Perfil</label>
+                </center>
+            </th>
+           
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellidos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clave)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdPerfilNavigation.Nombre)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdUsuario" class="btn btn-warning">Editar</a> |
+         
+                <a asp-action="Delete" asp-route-id="@item.IdUsuario"class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

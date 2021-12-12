@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Proyecto2.Models.Comida>
+
+@{
+    ViewData["Title"] = "Menu";
+    Layout = "~/Views/Shared/_Layoutfinal.cshtml";
+}
+
+<h1>Menu</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Realizar compra</a>
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                <center>
+                    <label>Comida</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Descripción</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Fotografía</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Precio</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Estado</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Comercio</label>
+                </center>
+            </th>
+
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomComida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+
+                <img width="100" src="@Url.Action("getImage" ,"Comidas" ,new { id = item.IdComida })" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdComercioNavigation.IdComercio)
+            </td>
+           
+        </tr>
+}
+    </tbody>
+</table>

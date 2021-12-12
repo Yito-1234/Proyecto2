@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Proyecto2.Models.AfiliacionComercio>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Comercios</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Nuevo Registro</a>
+</p>
+<table class="table table-bordered table-striped" >
+    <thead>
+        <tr>
+            <th>
+                <center>
+                    <label>Comercio</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Descripción</label>
+                </center>
+            </th>
+            <th>
+                <center>
+                    <label>Teléfono</label>
+                </center>
+            </th>
+        
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Decripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdComercio" class="btn btn-warning" >Editar</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdComercio" class="btn btn-danger">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
